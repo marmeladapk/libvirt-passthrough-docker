@@ -1,0 +1,11 @@
+[Unit]
+Description=Oneshot service to start default network which is not started by libvirtd for some reason. 
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/virsh net-start default
+ExecStop=/usr/bin/virsh net-destroy default
+
+[Install]
+WantedBy=multi-user.target
+

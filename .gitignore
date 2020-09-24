@@ -1,0 +1,4 @@
+libvirt*
+virt-*
+docker-qemu-build*
+lg-build/LookingGlass

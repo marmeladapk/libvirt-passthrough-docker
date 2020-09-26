@@ -4,13 +4,13 @@ uid=`id -u`
 
 # https://medium.com/@SaravSun/running-gui-applications-inside-docker-containers-83d65c0db110
 # http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
-# docker build -t qemu:latest .
+# docker build -t libvirt-docker:latest .
 
 sudo apparmor_parser -r -W ./aa_profile
 
 docker run -d --rm \
      --stop-timeout 100 \
-     --name qemud \
+     --name libvirtd \
      --privileged \
      --security-opt apparmor=docker-unconfined \
      --env="DISPLAY" \
@@ -26,7 +26,8 @@ docker run -d --rm \
      -v libvirt-conf:/etc/libvirt \
      -v libvirt-dbus:/home/root/.config/dconf \
      -v libvirt-var:/var/lib/libvirt \
-     qemu:latest
+     libvirt-docker:latest
 
-sudo apparmor_parser -R ./aa_profile
+# Remove AppArmor profile when container stops, non-blocking
+(docker container wait libvirtd && sudo apparmor_parser -R ./aa_profile) &
 

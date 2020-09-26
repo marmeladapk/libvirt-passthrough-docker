@@ -9,5 +9,6 @@ file,
 umount,
 mount,
 pivot_root,
+ptrace,
 change_profile -> *,
 }

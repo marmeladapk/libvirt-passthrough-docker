@@ -46,6 +46,7 @@ COPY pulse-client.conf /etc/pulse/client.conf
 COPY qemu /etc/libvirt/hooks/qemu
 COPY default-network.xml /run/default-network.xml
 COPY net-start.service /usr/lib/systemd/system/net-start.service
+COPY vbios_gvt_uefi.rom /vbios_gvt_uefi.rom
 # Change default network to not clash with host libvirt default network
 # Autostart does not work for some reason
 RUN systemctl start libvirtd && virsh net-undefine default && virsh net-define /run/default-network.xml && virsh net-autostart default && rm /run/default-network.xml && systemctl stop libvirtd

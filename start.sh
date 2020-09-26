@@ -20,7 +20,6 @@ docker run -d --rm \
      -v /run/udev:/run/udev:shared \
      -v /dev/bus/usb:/dev/bus/usb:rw,shared \
      -v `pwd`/xubuntu-20.04.1-desktop-amd64.iso:/run/xubuntu-20.04.1-desktop-amd64.iso:ro \
-     -v ~/Skrypty/vbios_gvt_uefi.rom:/vbios_gvt_uefi.rom:rw \
      -v /dev/dri:/dev/dri:rw \
      -v /run/user/${uid}/pulse:/run/user/0/pulse \
      -v ~/.config/pulse/cookie:/home/root/.config/pulse/cookie:ro \
